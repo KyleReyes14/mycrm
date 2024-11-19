@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
+from .models import Customer, Pet
 
 # Create your views here.
 def home(request):
+	customers = Customer.objects.all()
+	
+	#authentication of logging in 
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
@@ -21,6 +25,13 @@ def home(request):
 	else: 
 		return render(request, 'home.html', {})
 
+def customers(request):
+    customers = Customer.objects.all()
+    return render(request, 'customers.html', {'customers': customers})
+
+def pets(request):
+    pets = Pet.objects.all()
+    return render(request, 'pets.html', {'pets': pets})
 
 def logout_user(request):
 	logout(request)

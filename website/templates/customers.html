@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Customers</h1>
+{% if customers %}
+    {% for customer in customers %}
+        {{ customer }} <br/>
+    {% endfor %}
+{% else %}
+    <p>No customers available.</p>
+{% endif %}
+
+{% endblock %}

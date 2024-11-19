@@ -22,7 +22,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('logout/', views.logout_user, name='logout'),
     path('register/', views.register_user, name='register'),
-
+    path('pets/', views.pets, name='pets'),
+    path('customers/', views.customers, name='customers'),
 ]
 
 print(views.__dict__)

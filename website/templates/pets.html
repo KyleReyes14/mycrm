@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Pets</h1>
+{% if pets %}
+    <ul>
+    {% for pet in pets %}
+        <li>{{ pet.name }} ({{ pet.type }}) - {{ pet.age }} years old</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No pets available.</p>
+{% endif %}
+
+{% endblock %}
