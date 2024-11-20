@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Customers</h1>
 {% if customers %}
-<table class="table table-striped">
-    <thead>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
@@ -16,24 +15,22 @@
     </thead>
     <tbody>
         <tr>
-            
+            {% for customer in customers %}
+                <td>{{ customer.first_name }} {{ customer.last_name }} </td>
+                <td>{{ customer.email }} </td>
+                <td>{{ customer.phone }} </td>
+                <td>{{ customer.address }} </td>
+                <td>{{ customer.created_at }} </td>
+                <td>{{ customer.id }} </td>
         </tr>
-    </tbody>
-</table>
-    
-    {% for customer in customers %}
-        {{ customer.first_name }}
-        {{ customer.last_name }}
-        {{ customer.email }}
-        {{ customer.phone }}
-        {{ customer.address }}
-        {{ customer.created_at }}
-        {{ customer.id }}
-        <br/><br/>
-    {% endfor %}
+            {% endfor %}
 {% else %}
     <p>No customers available.</p>
 {% endif %}
+    </tbody>
+</table>
+    
+   
 
 {% endblock %}
 
