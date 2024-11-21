@@ -10,6 +10,11 @@
     <p><strong>Adopted Status:</strong> {{ pet_record.adopted }}</p>
     <p><strong>Owner:</strong> {{ pet_record.owner }}</p>
     
-        <a href="{% url 'pets' %}" class="btn btn-secondary mt-3">Back to Pets</a>
-        </a>
+    <a href="{% url 'pets' %}" class="btn btn-secondary mt-3">Back to Pets</a>
+    </a>
+    <a href="{% url 'delete_pet' pet_record.id %}" class="btn btn-danger" 
+    onclick="return confirm('Are you sure you want to delete this customer record?');">
+    Delete Record
+    </a>
+</div>
 {% endblock %}
