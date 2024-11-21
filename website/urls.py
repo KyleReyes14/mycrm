@@ -25,6 +25,7 @@ urlpatterns = [
     path('pets/', views.pets, name='pets'),
     path('customers/', views.customers, name='customers'),
     path('record/<int:pk>/', views.customer_record, name='record'),
+    path('delete_customer/<int:pk>/', views.delete_customer, name='delete_customer'),
 ]
 
 print(views.__dict__)
