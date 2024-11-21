@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Customer
+from .models import Customer, Pet
 
 class SignUpForm(UserCreationForm):
 	email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
@@ -62,3 +62,45 @@ class AddRecordForm(forms.ModelForm):
     class Meta:
         model = Customer  # Specify the model here
         fields = ['first_name', 'last_name', 'email', 'phone', 'address']
+		
+    
+class AddPetForm(forms.ModelForm):
+    name = forms.CharField(
+        required=True,
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Name", "class": "form-control"}),
+        label=""
+    )
+    species = forms.EmailField(
+        required=True,
+        widget=forms.widgets.EmailInput(attrs={"placeholder": "Species", "class": "form-control"}),
+        label=""
+    )
+    breed = forms.EmailField(
+        required=True,
+        widget=forms.widgets.EmailInput(attrs={"placeholder": "Breed", "class": "form-control"}),
+        label=""
+    )
+    age = forms.CharField(
+        required=True,
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Age", "class": "form-control"}),
+        label=""
+    )
+    description = forms.CharField(
+        required=True,
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Description", "class": "form-control"}),
+        label=""
+    )
+    adopted = forms.CharField(
+        required=True,
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Adopted", "class": "form-control"}),
+        label=""
+    )
+    Owner = forms.CharField(
+        required=True,
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Owner", "class": "form-control"}),
+        label=""
+    )
+    
+class Meta_p:
+    model = Pet  # Specify the model here
+    fields = ['name','speces', 'breed', 'age', 'description', 'adopted', 'owner']

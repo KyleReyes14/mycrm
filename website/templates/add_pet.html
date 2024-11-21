@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<div class="col-md-6 offset-md-3">
+    <h1>Add Pet Record</h1>
+<br/>
+
+<form method="POST" action="{%url 'add_pet' %}">
+    {% csrf_token %}
+
+    {{form_p.as_p}}
+
+<br/>
+    <button type="submit" class="btn btn-secondary">Add Record</button>
+</form>
+
+{%endblock%}
