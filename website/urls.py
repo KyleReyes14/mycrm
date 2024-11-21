@@ -24,6 +24,7 @@ urlpatterns = [
     path('register/', views.register_user, name='register'),
     path('pets/', views.pets, name='pets'),
     path('customers/', views.customers, name='customers'),
+    path('record/<int:pk>/', views.customer_record, name='record'),
 ]
 
 print(views.__dict__)
