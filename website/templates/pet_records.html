@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h1>Pet Records:</h1>
+    <p><strong>Name:</strong> {{ pet_record.name }} {{ customer_record.last_name }}</p>
+    <p><strong>Species:</strong> {{ pet_record.species }}</p>
+    <p><strong>Breed:</strong> {{ pet_record.breed }}</p>
+    <p><strong>Age:</strong> {{ pet_record.age }}</p>
+    <p><strong>Adopted Status:</strong> {{ pet_record.adopted }}</p>
+    <p><strong>Owner:</strong> {{ pet_record.owner }}</p>
+    
+        <a href="{% url 'pets' %}" class="btn btn-secondary mt-3">Back to Pets</a>
+        </a>
+{% endblock %}

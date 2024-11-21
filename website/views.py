@@ -64,6 +64,15 @@ def customer_record(request, pk):
 		messages.success(request, "You must be logged in to view that page")
 		return redirect('home')
 	
+def pet_record(request, pk):
+	if request.user.is_authenticated:
+		#look up indiv pets record
+		pet_record = Pet.objects.get(id=pk)
+		return render(request, 'pet_records.html', {'pet_record':pet_record})
+	else:
+		messages.success(request, "You must be logged in to view that page")
+		return redirect('home')
+	
 def delete_customer(request, pk):
 	if request.user.is_authenticated:
 		delete_it = Customer.objects.get(id=pk)
