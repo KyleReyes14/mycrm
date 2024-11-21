@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, AddRecordForm
 from .models import Customer, Pet
 
 # Create your views here.
@@ -73,3 +73,39 @@ def delete_customer(request, pk):
 	else:
 		messages.success(request, "You Must be Logged in to complete action.")
 		return redirect('home')
+
+def add_customer(request):
+	form = AddRecordForm(request.POST or None)
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			if form.is_valid():
+				form.save()
+				messages.success(request, "Successfully added record.")
+				return redirect('customers')
+
+		return render(request, 'add_customer.html', {'form': form})
+	else:
+		messages.success(request, "You must be logged in.")
+		return redirect('home')
+
+def update_customer(request, pk):
+    if request.user.is_authenticated:
+        # Get the current customer record or return a 404 if not found
+        current_customer = get_object_or_404(Customer, id=pk)
+
+        # If the request is POST, handle form submission
+        if request.method == "POST":
+            form = AddRecordForm(request.POST, instance=current_customer)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Customer record updated successfully.")
+                return redirect('record', pk=pk)  # Redirect to the customer record page
+        else:
+            # For GET requests, display the form prefilled with the current customer data
+            form = AddRecordForm(instance=current_customer)
+
+        return render(request, 'update_customer.html', {'form': form})
+
+    else:
+        messages.error(request, "You must be logged in to update a customer record.")
+        return redirect('home')
