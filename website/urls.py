@@ -28,6 +28,7 @@ urlpatterns = [
     path('delete_customer/<int:pk>/', views.delete_customer, name='delete_customer'),
     path('add_customer/', views.add_customer, name='add_customer'),
     path('update_customer/<int:pk>/', views.update_customer, name='update_customer'),
+    path('update_pet/<int:pk>/', views.update_pet, name='update_pet'),
     path('pet_record/<int:pk>/', views.pet_record, name='pet_record'),
     path('delete_pet/<int:pk>/', views.delete_pet, name='delete_pet'),
     path('add_pet/', views.add_pet, name='add_pet'),

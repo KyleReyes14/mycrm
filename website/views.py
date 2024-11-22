@@ -144,3 +144,25 @@ def update_customer(request, pk):
     else:
         messages.error(request, "You must be logged in to update a customer record.")
         return redirect('home')
+	
+def update_pet(request, pk):
+    if request.user.is_authenticated:
+        # Get the current customer record or return a 404 if not found
+        current_pet = get_object_or_404(Pet, id=pk)
+
+        # If the request is POST, handle form submission
+        if request.method == "POST":
+            form_p = AddPetForm(request.POST, instance=current_pet)
+            if form_p.is_valid():
+                form_p.save()
+                messages.success(request, "Pet record updated successfully.")
+                return redirect('pet_record', pk=pk)  # Redirect to the pet record page
+        else:
+            # For GET requests, display the form prefilled with the current customer data
+            form_p = AddPetForm(instance=current_pet)
+
+        return render(request, 'update_pet.html', {'form_p': form_p})
+
+    else:
+        messages.error(request, "You must be logged in to update a customer record.")
+        return redirect('home')
