@@ -95,12 +95,8 @@ class AddPetForm(forms.ModelForm):
         widget=forms.widgets.TextInput(attrs={"placeholder": "Adopted", "class": "form-control"}),
         label=""
     )
-    Owner = forms.CharField(
-        required=True,
-        widget=forms.widgets.TextInput(attrs={"placeholder": "Owner", "class": "form-control"}),
-        label=""
-    )
+    owner = forms.ModelChoiceField(queryset=Customer.objects.all(), widget=forms.Select(attrs={"class": "form-control"}))
     
-class Meta_p:
-    model = Pet  # Specify the model here
-    fields = ['name','speces', 'breed', 'age', 'description', 'adopted', 'owner']
+    class Meta:
+        model = Pet  # Specify the model here
+        fields = ['name','species', 'breed', 'age', 'description', 'adopted', 'owner']

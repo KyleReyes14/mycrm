@@ -16,12 +16,22 @@ class Customer(models.Model):
 
 class Pet(models.Model):
 	# Fields for Pet information
+	status_choices = [
+		('Approved', 'Approved'),
+		('Pending', 'Pending'),
+		('Rejected', 'Rejected'),
+	]
+
 	name = models.CharField(max_length=100)
 	species = models.CharField(max_length=50)  # e.g., Dog, Cat
 	breed = models.CharField(max_length=100, blank=True, null=True)
 	age = models.IntegerField()
 	description = models.TextField(blank=True, null=True)
-	adopted = models.BooleanField(default=False)  # Whether the pet is adopted
+	adopted = models.CharField(
+        max_length=10,
+        choices=status_choices,
+        default='Pending'
+	  )  # Status of adoption process
 	owner = models.ForeignKey(
 		Customer, on_delete=models.SET_NULL, blank=True, null=True,
 		related_name='pets'  # Reverse lookup for customer's pets

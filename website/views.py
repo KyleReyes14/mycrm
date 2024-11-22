@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm
+from .forms import SignUpForm, AddRecordForm, AddPetForm
 from .models import Customer, Pet
 
 # Create your views here.
@@ -84,7 +84,7 @@ def delete_pet(request, pk):
 		return redirect('home')
 
 def add_pet(request):
-	form_p = AddRecordForm(request.POST or None)
+	form_p = AddPetForm(request.POST or None)
 	if request.user.is_authenticated:
 		if request.method == "POST":
 			if form_p.is_valid():

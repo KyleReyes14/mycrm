@@ -1,17 +1,49 @@
-{%extends 'base.html'%}
-{%block content%}
+{% extends 'base.html' %}
+{% block content %}
 
 <div class="col-md-6 offset-md-3">
-    <h1>Add Pet Record</h1>
-<br/>
-
-<form method="POST" action="{%url 'add_pet' %}">
-    {% csrf_token %}
-
-    {{form_p.as_p}}
-
-<br/>
-    <button type="submit" class="btn btn-secondary">Add Record</button>
-</form>
-
-{%endblock%}
+    <div class="col-md-6 offset-md-3">
+        <h1>Add Pet Record</h1>
+    </div>
+    <br/>
+    <form method="POST" action="{% url 'add_pet' %}">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            {{ form_p.name.label_tag }}
+            {{ form_p.name }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_p.species.label_tag }}
+            {{ form_p.species }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_p.breed.label_tag }}
+            {{ form_p.breed }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_p.age.label_tag }}
+            {{ form_p.age }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_p.description.label_tag }}
+            {{ form_p.description }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_p.adopted.label_tag }}
+            {{ form_p.adopted }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form_p.owner.label_tag }}
+            {{ form_p.owner }}
+        </div>
+        
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+{% endblock %}
