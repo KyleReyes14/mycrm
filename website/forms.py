@@ -58,10 +58,31 @@ class AddRecordForm(forms.ModelForm):
         widget=forms.widgets.TextInput(attrs={"placeholder": "Address", "class": "form-control"}),
         label=""
     )
-
+    city = forms.CharField(
+        required=True,
+        widget=forms.widgets.TextInput(attrs={"placeholder": "City", "class": "form-control"}),
+        label=""
+    )
+    prospect = forms.ModelChoiceField(
+          queryset=Pet.objects.all(),
+          widget=forms.Select(attrs={'class':'form-control'}),
+          required=False
+    )
+    inquire_date = forms.DateField(
+        required=False,  # Optional if not always needed
+        widget=forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+        label="Inquire Date"
+    )
+    approved_date = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={"class": "form-control", "type": "date"}),
+        label="Approved Date"
+    )
     class Meta:
         model = Customer  # Specify the model here
-        fields = ['first_name', 'last_name', 'email', 'phone', 'address']
+        fields = ['first_name', 'last_name', 'email', 'phone', 
+                'address', 'city', 'prospect', 'inquire_date', 
+                'approved_date']
 		
     
 class AddPetForm(forms.ModelForm):

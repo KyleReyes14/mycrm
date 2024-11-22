@@ -5,13 +5,55 @@
     <h1>Add Customer Record</h1>
 <br/>
 
-<form method="POST" action="{%url 'add_customer' %}">
+<form method="POST" action="{% url 'add_customer' %}">
     {% csrf_token %}
 
-    {{form.as_p}}
+    <div class="mb-3">
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+    </div>
 
-<br/>
-    <button type="submit" class="btn btn-secondary">Add Record</button>
+    <div class="mb-3">
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.phone.label_tag }}
+        {{ form.phone }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.address.label_tag }}
+        {{ form.address }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.city.label_tag }}
+        {{ form.city }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.prospect.label_tag }}
+        {{ form.prospect }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.inquire_date.label_tag }}
+        {{ form.inquire_date }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.approved_date.label_tag }}
+        {{ form.approved_date }}
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Add Customer</button>
 </form>
 
 {%endblock%}

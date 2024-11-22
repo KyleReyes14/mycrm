@@ -7,7 +7,10 @@
     <p><strong>Email:</strong> {{ customer_record.email }}</p>
     <p><strong>Phone:</strong> {{ customer_record.phone }}</p>
     <p><strong>Address:</strong> {{ customer_record.address }}</p>
-    <p><strong>Created At:</strong> {{ customer_record.created_at }}</p>
+    <p><strong>City:</strong> {{ customer_record.city }}</p>
+    <p><strong>Prospect: {% if records.prospect %}{{ records.prospect }}{% else %}No Pet{% endif %}</p>
+    <p>Inquire Date: {{ customer_record.inquire_date|date:"m/d/Y" }}</p>
+    <p>Approved Date: {{ customer_record.approved_date|date:"m/d/Y" }}</p>
 
     <a href="{% url 'customers' %}" class="btn btn-secondary">Back to Customers</a>
     <a href="{% url 'delete_customer' customer_record.id %}" class="btn btn-danger" 

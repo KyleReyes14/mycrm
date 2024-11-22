@@ -6,10 +6,9 @@
     <thead class="table-dark">
       <tr>
         <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Address</th>
-        <th scope="col">Created At</th>
+        <th scope="col">Pet Prospect</th>
+        <th scope="col">Inquire Date</th>
+        <th scope="col">Approved Date</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -17,10 +16,9 @@
         {% for customer in customers %}
         <tr>
             <td>{{ customer.first_name }} {{ customer.last_name }}</td>
-            <td>{{ customer.email }}</td>
-            <td>{{ customer.phone }}</td>
-            <td>{{ customer.address }}</td>
-            <td>{{ customer.created_at }}</td>
+            <td>{{ customer.prospect }}</td>
+            <td>{{ customer.inquire_date|date:"m/d/Y" }}</td>
+            <td>{{ customer.approved_date|date:"m/d/Y" }}</td>
             <td>
                 <a href="{% url 'record' customer.id %}" class="btn btn-dark btn-sm">View</a>
             </td>
