@@ -70,19 +70,19 @@ class AddPetForm(forms.ModelForm):
         widget=forms.widgets.TextInput(attrs={"placeholder": "Name", "class": "form-control"}),
         label=""
     )
-    species = forms.EmailField(
+    species = forms.CharField(
         required=True,
-        widget=forms.widgets.EmailInput(attrs={"placeholder": "Species", "class": "form-control"}),
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Species", "class": "form-control"}),
         label=""
     )
-    breed = forms.EmailField(
+    breed = forms.CharField(
         required=True,
-        widget=forms.widgets.EmailInput(attrs={"placeholder": "Breed", "class": "form-control"}),
+        widget=forms.widgets.TextInput(attrs={"placeholder": "Breed", "class": "form-control"}),
         label=""
     )
-    age = forms.CharField(
+    age = forms.IntegerField(
         required=True,
-        widget=forms.widgets.TextInput(attrs={"placeholder": "Age", "class": "form-control"}),
+        widget=forms.NumberInput(attrs={"placeholder": "Age", "class": "form-control"}),
         label=""
     )
     description = forms.CharField(
@@ -90,13 +90,17 @@ class AddPetForm(forms.ModelForm):
         widget=forms.widgets.TextInput(attrs={"placeholder": "Description", "class": "form-control"}),
         label=""
     )
-    adopted = forms.CharField(
-        required=True,
-        widget=forms.widgets.TextInput(attrs={"placeholder": "Adopted", "class": "form-control"}),
-        label=""
+    adopted = forms.ChoiceField(
+        choices=Pet.status_choices,
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="Adopted Status"
     )
-    owner = forms.ModelChoiceField(queryset=Customer.objects.all(), widget=forms.Select(attrs={"class": "form-control"}))
-    
+    owner = forms.ModelChoiceField(
+    queryset=Customer.objects.all(), 
+    widget=forms.Select(attrs={"class": "form-control"}), 
+    required=False,  # Makes the field optional
+    empty_label="No Owner"  # Adds a blank option with this label
+    )
     class Meta:
         model = Pet  # Specify the model here
         fields = ['name','species', 'breed', 'age', 'description', 'adopted', 'owner']

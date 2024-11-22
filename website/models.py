@@ -20,6 +20,7 @@ class Pet(models.Model):
 		('Approved', 'Approved'),
 		('Pending', 'Pending'),
 		('Rejected', 'Rejected'),
+		('No Proespect Yet', 'No Prospect Yet'),
 	]
 
 	name = models.CharField(max_length=100)
@@ -28,7 +29,7 @@ class Pet(models.Model):
 	age = models.IntegerField()
 	description = models.TextField(blank=True, null=True)
 	adopted = models.CharField(
-        max_length=10,
+        max_length=25,
         choices=status_choices,
         default='Pending'
 	  )  # Status of adoption process

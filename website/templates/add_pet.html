@@ -9,39 +9,47 @@
     <form method="POST" action="{% url 'add_pet' %}">
         {% csrf_token %}
         
+        {{ form_p.non_field_errors }}
         <div class="mb-3">
             {{ form_p.name.label_tag }}
             {{ form_p.name }}
+            {{ form_p.name.errors }}
         </div>
         
         <div class="mb-3">
             {{ form_p.species.label_tag }}
             {{ form_p.species }}
+            {{ form_p.species.errors }}
         </div>
         
         <div class="mb-3">
             {{ form_p.breed.label_tag }}
             {{ form_p.breed }}
+            {{ form_p.breed.errors }}
         </div>
         
         <div class="mb-3">
             {{ form_p.age.label_tag }}
             {{ form_p.age }}
+            {{ form_p.age.errors }}
         </div>
         
         <div class="mb-3">
             {{ form_p.description.label_tag }}
             {{ form_p.description }}
+            {{ form_p.description.errors }}
         </div>
         
         <div class="mb-3">
             {{ form_p.adopted.label_tag }}
             {{ form_p.adopted }}
+            {{ form_p.adopted.errors }}
         </div>
         
         <div class="mb-3">
             {{ form_p.owner.label_tag }}
             {{ form_p.owner }}
+            {{ form_p.owner.errors }}
         </div>
         
         <button type="submit" class="btn btn-secondary">Submit</button>

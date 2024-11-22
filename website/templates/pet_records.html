@@ -8,13 +8,13 @@
     <p><strong>Breed:</strong> {{ pet_record.breed }}</p>
     <p><strong>Age:</strong> {{ pet_record.age }}</p>
     <p><strong>Adopted Status:</strong> {{ pet_record.adopted }}</p>
-    <p><strong>Owner:</strong> {{ pet_record.owner }}</p>
+    <p><strong>Owner: {% if pet_record.owner %}{{ pet_record.owner }}{% else %}No Owner Yet{% endif %}</p>
     
-    <a href="{% url 'pets' %}" class="btn btn-secondary mt-3">Back to Pets</a>
-    </a>
-    <a href="{% url 'delete_pet' pet_record.id %}" class="btn btn-danger" 
-    onclick="return confirm('Are you sure you want to delete this pet record?');">
-    Delete Record
-    </a>
+    <div class="d-flex gap-2 mt-3">
+        <a href="{% url 'pets' %}" class="btn btn-secondary">Back to Pets</a>
+        <a href="{% url 'delete_pet' pet_record.id %}" class="btn btn-danger" 
+        onclick="return confirm('Are you sure you want to delete this pet record?');">
+        Delete Record</a>
+    </div>
 </div>
 {% endblock %}

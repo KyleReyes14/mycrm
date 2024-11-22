@@ -84,18 +84,20 @@ def delete_pet(request, pk):
 		return redirect('home')
 
 def add_pet(request):
-	form_p = AddPetForm(request.POST or None)
-	if request.user.is_authenticated:
-		if request.method == "POST":
-			if form_p.is_valid():
-				form_p.save()
-				messages.success(request, "Successfully added record.")
-				return redirect('pets')
-
-		return render(request, 'add_pet.html', {'form_p': form_p})
-	else:
-		messages.success(request, "You must be logged in.")
-		return redirect('home')
+    form_p = AddPetForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form_p.is_valid():
+                print("Form is valid. Saving...")
+                form_p.save()
+                messages.success(request, "Successfully added record.")
+                return redirect('pets')
+            else:
+                print("Form is invalid:", form_p.errors)  # Log errors
+        return render(request, 'add_pet.html', {'form_p': form_p})
+    else:
+        messages.success(request, "You must be logged in.")
+        return redirect('home')
 
 def delete_customer(request, pk):
 	if request.user.is_authenticated:
