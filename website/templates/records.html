@@ -9,7 +9,7 @@
     <p><strong>Phone:</strong> {{ customer_record.phone }}</p>
     <p><strong>Address:</strong> {{ customer_record.address }}</p>
     <p><strong>City:</strong> {{ customer_record.city }}</p>
-    <p><strong>Prospect: {% if records.prospect %}{{ records.prospect }}{% else %}No Pet{% endif %}</p> <!--accounts if pet adoption application is rejected-->
+    <p><strong>Prospect: {% if customer_record.prospect %}{{ customer_record.prospect }}{% else %}No Pet{% endif %}</p> <!--accounts if pet adoption application is rejected-->
     <p>Inquire Date: {{ customer_record.inquire_date|date:"m/d/Y" }}</p>
     <p>Approved Date: {{ customer_record.approved_date|date:"m/d/Y" }}</p>
     

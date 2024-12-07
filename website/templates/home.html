@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
+{%load static%}
+
 
 <!--homepage view if user successfully logged in-->
   {% if user.is_authenticated %}
-    <h1>Welcome back, {{ user.username }}!</h1>
+  <div class="homepage-container">
+    <div class="welcome-section">
+        <h1>Welcome to FurEver Home</h1>
+        <p class="tagline">"Where Strays Turn to Stays in Forever Ways!"</p>
+    </div>
+
+    <div class="about-section">
+        <h2>About Us</h2>
+        <p>
+            PetConnect is a platform dedicated to connecting loving families with pets in need of a home. 
+            Whether you're looking to adopt, browse available pets, or manage customer records, we've got you covered.
+        </p>
+    </div>
+
+    <div class="features-section">
+        <h2>What You Can Do Here:</h2>
+        <ul>
+            <li>Browse available pets for adoption</li>
+            <li>Manage customer and pet records</li>
+            <li>Keep track of adoption statuses</li>
+        </ul>
+    </div>
+</div>
   
   <!--homepage view if user is unsuccessful with log in-->
   {% else %}

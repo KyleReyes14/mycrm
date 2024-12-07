@@ -7,7 +7,7 @@ from .models import Customer, Pet
 # Create your views here.
 def home(request):
 	customers = Customer.objects.all()
-	
+
 	#authentication of logging in 
 	if request.method == 'POST':
 		username = request.POST['username']

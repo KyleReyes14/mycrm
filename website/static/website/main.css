@@ -1,0 +1,85 @@
+/* Basic reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Homepage container */
+.homepage-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Welcome section */
+.welcome-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    color: #2a9d8f;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-style: italic;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+/* About section */
+.about-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.about-section h2 {
+    color: #264653;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Features section */
+.features-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.features-section h2 {
+    color: #264653;
+    margin-bottom: 10px;
+}
+
+.features-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features-section ul li {
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+.features-section ul li::before {
+    content: "•";
+    color: #2a9d8f;
+    margin-right: 8px;
+    font-weight: bold;
+}
