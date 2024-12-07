@@ -1,3 +1,5 @@
+<!--Bootstrap navbar-->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">FurEver Home</a>
@@ -8,6 +10,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         {% if user.is_authenticated %}
+        <!--shows navbar buttons if signed in-->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'pets' %}">Pets</a>
           </li>  
@@ -29,6 +32,7 @@
           </li>
           
         {%else%}
+        <!--redirects user to homepage to login/register if not authenticated-->
           <li class="nav-item">
             <a class="nav-link" href="{%url 'register'%}">Register</a>
           </li>

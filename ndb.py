@@ -1,3 +1,4 @@
+#Creates database model in mysql workbench
 import mysql.connector
 
 dataBase = mysql.connector.connect(

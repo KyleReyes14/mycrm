@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!--Displays individual pet records if 'view' button is clicked-->
 <div class="container mt-4">
     <h1>Pet Records:</h1>
     <p><strong>Name:</strong> {{ pet_record.name }} {{ customer_record.last_name }}</p>
@@ -8,13 +9,18 @@
     <p><strong>Breed:</strong> {{ pet_record.breed }}</p>
     <p><strong>Age:</strong> {{ pet_record.age }}</p>
     <p><strong>Adopted Status:</strong> {{ pet_record.adopted }}</p>
-    <p><strong>Owner: {% if pet_record.owner %}{{ pet_record.owner }}{% else %}No Owner Yet{% endif %}</p>
+    <p><strong>Owner: {% if pet_record.owner %}{{ pet_record.owner }}{% else %}No Owner Yet{% endif %}</p> <!--accounts for pets who does not have prospect owner yet-->
     
     <div class="d-flex gap-2 mt-3">
+        <!--redirects back to pet page if clicked-->
         <a href="{% url 'pets' %}" class="btn btn-secondary">Back to Pets</a>
+
+        <!--Deletes an individual record with confirmation prompt-->
         <a href="{% url 'delete_pet' pet_record.id %}" class="btn btn-danger" 
         onclick="return confirm('Are you sure you want to delete this pet record?');">
         Delete Record</a>
+
+         <!--Redirects to form if wished to update information of pet-->
         <a href="{% url 'update_pet' pet_record.id %}" class="btn btn-secondary">Update Record</a>
     </div>
 </div>

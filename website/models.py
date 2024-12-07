@@ -2,8 +2,10 @@ from django.db import models
 
 # Create your models here.
 # Create your models here.
+
+# Fields for Pet information
 class Pet(models.Model):
-    # Fields for Pet information
+    #status choices for dropdown field choice on adoption status
     status_choices = [
         ('Approved', 'Approved'),
         ('Pending', 'Pending'),
@@ -21,6 +23,7 @@ class Pet(models.Model):
         choices=status_choices,
         default='Pending'
     )  # Status of adoption process
+
     owner = models.ForeignKey(
         'Customer', on_delete=models.SET_NULL, blank=True, null=True,
         related_name='pets'  # Reverse lookup for customer's pets
@@ -29,8 +32,8 @@ class Pet(models.Model):
     def __str__(self):
         return self.name  # Display the name of the pet in dropdowns
 
+# Fields for Customer information
 class Customer(models.Model):
-    # Fields for Customer information
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
@@ -40,9 +43,9 @@ class Customer(models.Model):
     prospect = models.ForeignKey(
         'Pet', on_delete=models.SET_NULL, 
         blank=True, null=True, related_name='customers'
-    )
-    inquire_date = models.DateTimeField(blank=True, null=True)
-    approved_date = models.DateTimeField(blank=True, null=True)
+    ) # Reverse lookup for pets 
+    inquire_date = models.DateTimeField(blank=True, null=True) #date data type for inquiry date
+    approved_date = models.DateTimeField(blank=True, null=True) #date data type for concluded approved date
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name}" #displays concatenated string for first and last name

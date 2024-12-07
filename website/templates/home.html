@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<!--homepage view if user successfully logged in-->
   {% if user.is_authenticated %}
     <h1>Welcome back, {{ user.username }}!</h1>
+  
+  <!--homepage view if user is unsuccessful with log in-->
   {% else %}
     <h1>Login</h1>
     <form method="POST" action="{% url 'home' %}">
