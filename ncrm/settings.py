@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'ncrm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'KyleReyes14',
+        'NAME': 'KyleReyes14$default',
         'USER': 'root',
         'PASSWORD': 'Kj1214@@',
         'HOST': 'KyleReyes14.mysql.pythonanywhere-services.com',
