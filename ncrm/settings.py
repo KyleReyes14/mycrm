@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-f5)+^qmuoy&v8(qhj(v)-sbugeri^wwxc+=1%9dkrg&ti6)u$y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['KyleReyes14.pythonanywhere.com']
 
 
 # Application definition
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'ncrm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ndb',
+        'NAME': 'KyleReyes14',
         'USER': 'root',
-        'PASSWORD': 'Kanny0102*_*@@',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'Kj1214@@',
+        'HOST': 'KyleReyes14.mysql.pythonanywhere-services.com',
         'PORT': '3306',
 
     }
