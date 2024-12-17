@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-f5)+^qmuoy&v8(qhj(v)-sbugeri^wwxc+=1%9dkrg&ti6)u$y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['KyleReyes14.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,15 +79,18 @@ WSGI_APPLICATION = 'ncrm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'KyleReyes14$default',
-        'USER': 'KyleReyes14',
-        'PASSWORD': 'Kj1214@@',
-        'HOST': 'KyleReyes14.mysql.pythonanywhere-services.com',
+        'NAME': 'ndb',
+        'USER': 'localhost',
+        'PASSWORD': 'password12345',
+        'HOST': 'root',
         'PORT': '3306',
 
     }
 }
 
+DATABASES = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -123,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR/ "static"] # Include the static folder in project directory
+MEDIA_URL = 'media/'
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

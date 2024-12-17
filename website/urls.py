@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.urls import path
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.home, name='home'), #path to homepage if logged in, form for sign-in credentials
@@ -33,5 +34,7 @@ urlpatterns = [
     path('delete_pet/<int:pk>/', views.delete_pet, name='delete_pet'), #path to deleteion of indiv pet record
     path('add_pet/', views.add_pet, name='add_pet'), #path to adding pet records
 ]
+
+urlpatterns += staticfiles_urlpatterns()
 
 print(views.__dict__)

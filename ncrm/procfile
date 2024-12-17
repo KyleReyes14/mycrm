@@ -1,0 +1,1 @@
+web gunicorn ncrm.wsgi:application --log-file -
